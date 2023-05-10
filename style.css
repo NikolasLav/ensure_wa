@@ -1,0 +1,9 @@
+body {
+    color: var(--tg-theme-text-color);
+    background: var(--tg-theme-bg-color);
+    font-size: 14px;
+}
+
+span {
+    color: #dc3545;
+}
