@@ -21,6 +21,7 @@ var eis = document.getElementById('contractEIS');
 var ikz = document.getElementById('contractIKZ');
 var subj = document.getElementById('contractSubj');
 var warranty_per = document.getElementById('warranty_per');
+// for number checking
 var bik = document.getElementById('counterpartyBankBic');
 var ks = document.getElementById('counterpartyAccountNumber');
 var eks = document.getElementById('counterpartyBankCorrAccount');
@@ -29,12 +30,21 @@ var kpp = document.getElementById('counterpartyKPP');
 var uin = document.getElementById('supplierBillId');
 var kbk = document.getElementById('taxInfoKBK');
 var oktmo = document.getElementById('taxInfoOKATO');
+// for replace forbidden simbols
+var counterparty_name = document.getElementById('counterpartyName');
+
+[subj, counterparty_name].forEach(function(element){
+    element.addEventListener('change', function(e) {
+        element.value = element.value.replace(/[»,«]/g, "\"")
+    });
+});
 
 [bik, ks, eks, inn, kpp, ikz, uin, kbk, oktmo].forEach(function(element){
     element.addEventListener('change', function(e) {
         element.value = element.value.replace(/\D/g, '')
     });
 });
+
 
 [warranty_per, select, eis, ikz, subj].forEach(function(element){
     element.addEventListener('change', function(e) {
