@@ -15,12 +15,26 @@ const purpose = document.getElementById('paymentPurpose');
 purpose.value = '';
 const purpose_length = document.getElementById('purposeLength');
 btn = document.getElementById('submit');
-
+//var numberPattern = /\d+/g;
 var select = document.getElementById('select');
 var eis = document.getElementById('contractEIS');
 var ikz = document.getElementById('contractIKZ');
 var subj = document.getElementById('contractSubj');
 var warranty_per = document.getElementById('warranty_per');
+var bik = document.getElementById('counterpartyBankBic');
+var ks = document.getElementById('counterpartyAccountNumber');
+var eks = document.getElementById('counterpartyBankCorrAccount');
+var inn = document.getElementById('counterpartyINN');
+var kpp = document.getElementById('counterpartyKPP');
+var uin = document.getElementById('supplierBillId');
+var kbk = document.getElementById('taxInfoKBK');
+var oktmo = document.getElementById('taxInfoOKATO');
+
+[bik, ks, eks, inn, kpp, ikz, uin, kbk, oktmo].forEach(function(element){
+    element.addEventListener('change', function(e) {
+        element.value = element.value.replace(/\D/g, '')
+    });
+});
 
 [warranty_per, select, eis, ikz, subj].forEach(function(element){
     element.addEventListener('change', function(e) {

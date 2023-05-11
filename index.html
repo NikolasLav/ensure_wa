@@ -33,7 +33,7 @@
 		<div class="col-sm-10">
 			<input type="text"
 			       onkeypress="return (event.charCode >= 48 && event.charCode <= 57 && /^\d{0,8}$/.test(this.value));"
-			       class="form-control" name="counterpartyBankBic" required>
+			       class="form-control" name="counterpartyBankBic" id="counterpartyBankBic" min="9" required>
 		</div>
 	</div>
 	<!--counterpartyAccountNumber	-->
@@ -44,7 +44,7 @@
 		<div class="col-sm-10">
 			<input type="text"
 			       onkeypress="return (event.charCode >= 48 && event.charCode <= 57 && /^\d{0,19}$/.test(this.value));"
-			       class="form-control" name="counterpartyAccountNumber" required>
+			       class="form-control" id="counterpartyAccountNumber" name="counterpartyAccountNumber" min="20" required>
 		</div>
 	</div>
 	<!--counterpartyBankCorrAccount	-->
@@ -55,7 +55,7 @@
 		<div class="col-sm-10">
 			<input type="text"
 			       onkeypress="return (event.charCode >= 48 && event.charCode <= 57 && /^\d{0,19}$/.test(this.value));"
-			       class="form-control" name="counterpartyBankCorrAccount" required>
+			       class="form-control" name="counterpartyBankCorrAccount" id="counterpartyBankCorrAccount" min="20" required>
 		</div>
 	</div>
 	<!--counterpartyName	-->
@@ -73,7 +73,7 @@
 			<div>
 				<input type="text"
 				       onkeypress="return (event.charCode >= 48 && event.charCode <= 57 && /^\d{0,9}$/.test(this.value));"
-				       class="form-control" name="counterpartyINN" required>
+				       class="form-control" name="counterpartyINN" id="counterpartyINN" min="9" required>
 			</div>
 		</div>
 	<!--counterpartyKPP	-->
@@ -82,7 +82,7 @@
 			<div>
 				<input type="text"
 				       onkeypress="return (event.charCode >= 48 && event.charCode <= 57 && /^\d{0,8}$/.test(this.value));"
-				       class="form-control" name="counterpartyKPP" required>
+				       class="form-control" name="counterpartyKPP" id="counterpartyKPP" min="10" required>
 			</div>
 		</div>
 	</div>
@@ -125,20 +125,19 @@
 		</div>
 	</div>
 	<!--supplierBillId	--><!--taxInfoKBK	-->
-	<div class="row mb-1 flex-nowrap bg-secondary bg-gradient bg-opacity-50 pb-1 border border-1 border rounded-3 justify-content-between align-items-center">
+	<div class="row mb-1 flex-nowrap align-items-end bg-secondary bg-gradient bg-opacity-50 pb-1 border border-1 border rounded-3 justify-content-between align-items-center">
 		<div class="col-sm-6 flex-shrink-1">
-			<label class="pb-0 pt-0"><b>14. УИН</b> ("поле 22")<i> если есть
-				требование</i></label>
+			<label class="pb-0 pt-0"><b>14. УИН</b> ("поле 22", 4 цифры)<i> пусто если нет требования</i></label>
 			<input type="text"
 				       onkeypress="return (event.charCode >= 48 && event.charCode <= 57 && /^\d{0,3}$/.test(this.value));"
-				       maxlength="4" class="form-control" name="supplierBillId">
+				       maxlength="4" class="form-control" name="supplierBillId" id="supplierBillId">
 		</div>
 	<!--taxInfoKBK	-->
 		<div class="col-sm-6 flex-shrink-1">
-			<label class="pb-0 pt-0"><b>15. КБК</b> (20 цифр)<i> если есть требование</i></label>
+			<label class="pb-0 pt-0"><b>15. КБК</b> (20 цифр)<i> пусто если нет требования</i></label>
 			<input type="text"
 			       onkeypress="return (event.charCode >= 48 && event.charCode <= 57 && /^\d{0,19}$/.test(this.value));"
-			       maxlength="20" class="form-control" name="taxInfoKBK">
+			       maxlength="20" class="form-control" name="taxInfoKBK" id="taxInfoKBK">
 		</div>
 	</div>
 	<!--taxInfoOKATO	-->
@@ -148,7 +147,7 @@
 		<div class="col-sm-10">
 			<input type="text"
 			       onkeypress="return (event.charCode >= 48 && event.charCode <= 57 && /^\d{0,19}$/.test(this.value));"
-			       maxlength="20" class="form-control" name="taxInfoOKATO">
+			       maxlength="11" class="form-control" name="taxInfoOKATO" id="taxInfoOKATO">
 		</div>
 	</div>
 	<!--Назначение платежа	-->
