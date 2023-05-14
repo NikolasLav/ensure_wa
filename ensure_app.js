@@ -22,30 +22,128 @@ var ikz = document.getElementById('contractIKZ');
 var subj = document.getElementById('contractSubj');
 var warranty_per = document.getElementById('warranty_per');
 // for number checking
-var bik = document.getElementById('counterpartyBankBic');
-var ks = document.getElementById('counterpartyAccountNumber');
-var eks = document.getElementById('counterpartyBankCorrAccount');
-var inn = document.getElementById('counterpartyINN');
-var kpp = document.getElementById('counterpartyKPP');
-var uin = document.getElementById('supplierBillId');
-var kbk = document.getElementById('taxInfoKBK');
-var oktmo = document.getElementById('taxInfoOKATO');
-// for replace forbidden simbols
-var counterparty_name = document.getElementById('counterpartyName');
+var bik = document.getElementById('counterpartyBankBic');  //+9+
+var ks = document.getElementById('counterpartyAccountNumber');  //+20+
+var eks = document.getElementById('counterpartyBankCorrAccount');  //+20+
+var inn = document.getElementById('counterpartyINN');  //+9+
+var kpp = document.getElementById('counterpartyKPP');  //+10+
+var uin = document.getElementById('supplierBillId');  //+4+
+var kbk = document.getElementById('taxInfoKBK');  //+1 or 20+
+var oktmo = document.getElementById('taxInfoOKATO');  //1, 8 or 11
 
+// forbidden symbols replace function
+var counterparty_name = document.getElementById('counterpartyName');
 [subj, counterparty_name].forEach(function(element){
     element.addEventListener('change', function(e) {
         element.value = element.value.replace(/[»,«]/g, "\"")
     });
 });
 
+// digit input only function
 [bik, ks, eks, inn, kpp, ikz, uin, kbk, oktmo].forEach(function(element){
     element.addEventListener('change', function(e) {
         element.value = element.value.replace(/\D/g, '')
     });
 });
 
+// length input checking function
+[bik, inn].forEach(function(element){
+    element.addEventListener('change', function(e) {
+        if (element.value.length < 9) {
+            element.style.background = "#ebabab";
+                        btn.style.background = "#e3292c"
+            btn.textContent = "Проверьте форму"
+            btn.setAttribute('disabled','disabled');
+        } else {
+            element.style.background = "#aafac1"
 
+            btn.style.background = "blue"
+            btn.textContent = "Отправить на оплату"
+            btn.removeAttribute("disabled");
+        };
+    });
+});
+[kpp].forEach(function(element){
+    element.addEventListener('change', function(e) {
+        if (element.value.length < 10) {
+            element.style.background = "#ebabab";
+            btn.style.background = "#e3292c"
+            btn.textContent = "Проверьте форму"
+            btn.setAttribute('disabled','disabled');
+        } else {
+            element.style.background = "#aafac1"
+
+            btn.style.background = "blue"
+            btn.textContent = "Отправить на оплату"
+            btn.removeAttribute("disabled");
+        };
+    });
+});
+[uin].forEach(function(element){
+    element.addEventListener('change', function(e) {
+        if (element.value.length < 4) {
+            element.style.background = "#ebabab";
+                        btn.style.background = "#e3292c"
+            btn.textContent = "Проверьте форму"
+            btn.setAttribute('disabled','disabled');
+        } else {
+            element.style.background = "#aafac1"
+
+            btn.style.background = "blue"
+            btn.textContent = "Отправить на оплату"
+            btn.removeAttribute("disabled");
+        };
+    });
+});
+[ks, eks].forEach(function(element){
+    element.addEventListener('change', function(e) {
+        if (element.value.length < 20) {
+            element.style.background = "#ebabab";
+                        btn.style.background = "#e3292c"
+            btn.textContent = "Проверьте форму"
+            btn.setAttribute('disabled','disabled');
+        } else {
+            element.style.background = "#aafac1"
+
+            btn.style.background = "blue"
+            btn.textContent = "Отправить на оплату"
+            btn.removeAttribute("disabled");
+        };
+    });
+});
+[kbk].forEach(function(element){
+    element.addEventListener('change', function(e) {
+        if (element.value.length != 20 && element.value.length != 1) {
+            element.style.background = "#ebabab";
+                        btn.style.background = "#e3292c"
+            btn.textContent = "Проверьте форму"
+            btn.setAttribute('disabled','disabled');
+        } else {
+            element.style.background = "#aafac1"
+
+            btn.style.background = "blue"
+            btn.textContent = "Отправить на оплату"
+            btn.removeAttribute("disabled");
+        };
+    });
+});
+[oktmo].forEach(function(element){
+    element.addEventListener('change', function(e) {
+        if (element.value.length != 11 && element.value.length != 8 && element.value.length != 1) {
+            element.style.background = "#ebabab";
+            btn.style.background = "#e3292c"
+            btn.textContent = "Проверьте форму"
+            btn.setAttribute('disabled','disabled');
+        } else {
+            element.style.background = "#aafac1"
+            btn.style.background = "blue"
+            btn.textContent = "Отправить на оплату"
+            btn.removeAttribute("disabled");
+        };
+    });
+});
+
+// purpose text forming and its length checking function
 [warranty_per, select, eis, ikz, subj].forEach(function(element){
     element.addEventListener('change', function(e) {
         let eis_val = eis.value
@@ -63,11 +161,15 @@ var counterparty_name = document.getElementById('counterpartyName');
         purpose.value = select.value + ' ' + numbers + subj.value;
         if (purpose.value.length > 210) {
             purpose_length.style.display = "block";
-            btn.style.display = "None"
+            btn.style.background = "#e3292c"
+            btn.textContent = "Проверьте форму"
+            btn.setAttribute('disabled','disabled');
         } else {
             purpose_length.style.display = "None"
-            btn.style.display = "block"
-                let warranty = select.value
+            btn.style.background = "blue"
+            btn.textContent = "Отправить на оплату"
+            btn.removeAttribute("disabled");
+        let warranty = select.value
         if (warranty == "Гар.Обесп.") {
             warranty_period.style.display = "block"
             purpose.value = select.value + ' ' + numbers + subj.value + ' ' + warranty_per.value + 'мес.';
