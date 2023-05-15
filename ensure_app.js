@@ -25,8 +25,8 @@ var warranty_per = document.getElementById('warranty_per');
 var bik = document.getElementById('counterpartyBankBic');  //+9+
 var ks = document.getElementById('counterpartyAccountNumber');  //+20+
 var eks = document.getElementById('counterpartyBankCorrAccount');  //+20+
-var inn = document.getElementById('counterpartyINN');  //+9+
-var kpp = document.getElementById('counterpartyKPP');  //+10+
+var inn = document.getElementById('counterpartyINN');  //+10+
+var kpp = document.getElementById('counterpartyKPP');  //+9+
 var uin = document.getElementById('supplierBillId');  //+4+
 var kbk = document.getElementById('taxInfoKBK');  //+1 or 20+
 var oktmo = document.getElementById('taxInfoOKATO');  //1, 8 or 11
@@ -47,7 +47,7 @@ var counterparty_name = document.getElementById('counterpartyName');
 });
 
 // length input checking function
-[bik, inn].forEach(function(element){
+[bik, kpp].forEach(function(element){
     element.addEventListener('change', function(e) {
         if (element.value.length < 9) {
             element.style.background = "#ebabab";
@@ -63,7 +63,7 @@ var counterparty_name = document.getElementById('counterpartyName');
         };
     });
 });
-[kpp].forEach(function(element){
+[inn].forEach(function(element){
     element.addEventListener('change', function(e) {
         if (element.value.length < 10) {
             element.style.background = "#ebabab";
