@@ -49,7 +49,7 @@ var counterparty_name = document.getElementById('counterpartyName');
 // length input checking function
 [bik, kpp].forEach(function(element){
     element.addEventListener('change', function(e) {
-        if (element.value.length < 9) {
+        if (element.value.length != 9) {
             element.style.background = "#ebabab";
                         btn.style.background = "#e3292c"
             btn.textContent = "Проверьте форму"
@@ -65,7 +65,7 @@ var counterparty_name = document.getElementById('counterpartyName');
 });
 [inn].forEach(function(element){
     element.addEventListener('change', function(e) {
-        if (element.value.length < 10) {
+        if (element.value.length != 10) {
             element.style.background = "#ebabab";
             btn.style.background = "#e3292c"
             btn.textContent = "Проверьте форму"
@@ -81,7 +81,7 @@ var counterparty_name = document.getElementById('counterpartyName');
 });
 [uin].forEach(function(element){
     element.addEventListener('change', function(e) {
-        if (element.value.length < 4) {
+        if (element.value.length != 4) {
             element.style.background = "#ebabab";
                         btn.style.background = "#e3292c"
             btn.textContent = "Проверьте форму"
@@ -97,7 +97,7 @@ var counterparty_name = document.getElementById('counterpartyName');
 });
 [ks, eks].forEach(function(element){
     element.addEventListener('change', function(e) {
-        if (element.value.length < 20) {
+        if (element.value.length != 20) {
             element.style.background = "#ebabab";
                         btn.style.background = "#e3292c"
             btn.textContent = "Проверьте форму"
