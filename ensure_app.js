@@ -1,7 +1,7 @@
 // ensure app
 
 let tg = window.Telegram.WebApp;
-tg.expand();
+//tg.expand();
 tg.MainButton.textColor = "#FFFFFF";
 tg.MainButton.color = "#FF00FF";
 
