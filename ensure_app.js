@@ -161,20 +161,22 @@ var counterparty_name = document.getElementById('counterpartyName');
         purpose.value = select.value + ' ' + numbers + subj.value;
         if (purpose.value.length > 210) {
             purpose_length.style.display = "block";
-            btn.style.background = "#e3292c"
-            btn.textContent = "Проверьте форму"
+            btn.style.background = "#e3292c";
+            btn.textContent = "Проверьте форму";
             btn.setAttribute('disabled','disabled');
         } else {
-            purpose_length.style.display = "None"
-            btn.style.background = "blue"
-            btn.textContent = "Отправить на оплату"
+            purpose_length.style.display = "None";
+            btn.style.background = "blue";
+            btn.textContent = "Отправить на оплату";
             btn.removeAttribute("disabled");
         let warranty = select.value
         if (warranty == "Гар.Обесп.") {
-            warranty_period.style.display = "block"
+            warranty_period.style.display = "block";
+            warranty_per.required = true;
             purpose.value = select.value + ' ' + numbers + subj.value + ' ' + warranty_per.value + 'мес.';
         } else {
-            warranty_period.style.display = "None"
+            warranty_period.style.display = "None";
+            warranty_per.required = false;
         }
         };
     });
@@ -184,9 +186,11 @@ var counterparty_name = document.getElementById('counterpartyName');
 // sending data
 document.getElementById("tg").addEventListener("submit", function(e){
     e.preventDefault();
+    let warranty_period_value = this.warranty_period.value;
     if (this.ensuringType.value != "Гар.Обесп.") {
-        this.warranty_period.value = "";
+        warranty_period_value = "NULL";
     };
+
     let data = {
         ensuringType: this.ensuringType.value,
         counterpartyBankBic: this.counterpartyBankBic.value,
@@ -204,7 +208,7 @@ document.getElementById("tg").addEventListener("submit", function(e){
         taxInfoKBK: this.taxInfoKBK.value,
         taxInfoOKATO: this.taxInfoOKATO.value,
         paymentPurpose: this.paymentPurpose.value,
-        warranty_period: this.warranty_period.value,
+        warranty_period: warranty_period_value,
     };
     console.log(JSON.stringify(data, null, 4));
     tg.MainButton.setText("Задача создана!");
