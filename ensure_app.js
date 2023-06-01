@@ -38,6 +38,23 @@ var counterparty_name = document.getElementById('counterpartyName');
         element.value = element.value.replace(/[»,«]/g, "\"")
     });
 });
+[counterparty_name].forEach(function(element){
+    element.addEventListener('change', function(e) {
+        if (element.value.length > 160) {
+            element.style.background = "#ebabab";
+                        btn.style.background = "#e3292c"
+            btn.textContent = "Проверьте форму"
+            btn.setAttribute('disabled','disabled');
+        } else {
+            element.style.background = "#aafac1"
+
+            btn.style.background = "blue"
+            btn.textContent = "Отправить на оплату"
+            btn.removeAttribute("disabled");
+        };
+    });
+});
+
 
 // digit input only function
 [bik, ks, eks, inn, kpp, ikz, uin, kbk, oktmo].forEach(function(element){
