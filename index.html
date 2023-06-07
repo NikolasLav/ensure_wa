@@ -108,17 +108,19 @@
 		
 		</div>
 	</div>
-	<!--supplierBillId	--><!--taxInfoKBK	-->
-	<div class="row mb-1 flex-nowrap align-items-end bg-secondary bg-gradient bg-opacity-50 pb-1 border border-1 border rounded-3 justify-content-between align-items-center">
-		<div class="col-sm-6 flex-shrink-1">
-			<label class="pb-0 pt-0"><b>11. УИН <span>*</span></b> ("поле 22", 4 цифры)<i> "0000" - нельзя!</i></label>
+	<!--supplierBillId	-->
+	<div class="row mb-1 bg-secondary bg-gradient bg-opacity-50 pb-1 border border-1 border rounded-3 align-items-center">
+		<label class="col-sm-2 col-form-label pb-0 pt-0"><b>11. УИН <span>*</span></b> ("поле 22", 4, 20 или 25 цифры, или "0")<i> "0" - можно, "0000" - нельзя!</i></label>
+		<div class="col-sm-10">
 			<input type="text"
-				       onkeypress="return (event.charCode >= 48 && event.charCode <= 57 && /^\d{0,3}$/.test(this.value));"
-				       maxlength="4" class="form-control" name="supplierBillId" id="supplierBillId" value="0002" required/>
+		           onkeypress="return (event.charCode >= 48 && event.charCode <= 57 && /^\d{0,24}$/.test(this.value));"
+		           maxlength="25" class="form-control" name="supplierBillId" id="supplierBillId" value="0002" required/>
 		</div>
+	</div>
 	<!--taxInfoKBK	-->
-		<div class="col-sm-6 flex-shrink-1">
-			<label class="pb-0 pt-0"><b>12. КБК <span>*</span></b> ("0" или 20 цифр)</label>
+	<div class="row mb-1 bg-secondary bg-gradient bg-opacity-50 pb-1 border border-1 border rounded-3 align-items-center">
+		<label class="col-sm-2 col-form-label pb-0 pt-0"><b>12. КБК <span>*</span></b> ("0" или 20 цифр)</label>
+		<div class="col-sm-10">
 			<input type="text"
 			       onkeypress="return (event.charCode >= 48 && event.charCode <= 57 && /^\d{0,19}$/.test(this.value));"
 			       maxlength="20" class="form-control" value="0" name="taxInfoKBK" id="taxInfoKBK" required/>

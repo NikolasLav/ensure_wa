@@ -98,7 +98,7 @@ var counterparty_name = document.getElementById('counterpartyName');
 });
 [uin].forEach(function(element){
     element.addEventListener('change', function(e) {
-        if (element.value.length != 4) {
+        if (element.value.length != 1 && element.value.length != 4 && element.value.length != 20 && element.value.length != 25) {
             element.style.background = "#ebabab";
                         btn.style.background = "#e3292c"
             btn.textContent = "Проверьте форму"
