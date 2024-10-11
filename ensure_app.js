@@ -209,6 +209,7 @@ document.getElementById("tg").addEventListener("submit", function(e){
     };
 
     let data = {
+        organizationName: this.organizationName.value,
         ensuringType: this.ensuringType.value,
         counterpartyBankBic: this.counterpartyBankBic.value,
         counterpartyAccountNumber: this.counterpartyAccountNumber.value,

@@ -10,11 +10,19 @@
 </head>
 <body>
 <form id="tg" class="container mt-1">
-	<!--ensuringType	-->
+	<!--organizationName & ensuringType	-->
 	<fieldset
-			class="row mb-1 bg-secondary bg-gradient bg-opacity-50 pb-1 border border-1 border rounded-3 align-items-center">
-		<label class="col-sm-2 col-form-label pb-0 pt-0"><b>1. Тип обеспечения <span>*</span></b></label>
-		<div class="col-sm-10 pt-1">
+			class="row mb-1 flex-nowrap bg-secondary bg-gradient bg-opacity-50 pb-1 border border-1 border rounded-3 justify-content-between">
+		<div class="col-sm-6 flex-shrink-1">
+			<label class="pb-0 pt-0"><b>Организация <span>*</span></b></label>
+			<select class="form-control" id="organizationName" autocomplete="off" required>
+				<option value="">--Выбрать организацию--</option>
+				<option value="Забота">Забота</option>
+				<option value="Виверн">Виверн</option>
+			</select>
+		</div>
+		<div class="col-sm-6 flex-shrink-1">
+		<label class="pb-0 pt-0"><b>1. Тип обеспечения <span>*</span></b></label>
 			<select class="form-control" id="select" name="ensuringType" autocomplete="off" required>
 				<option value="">--Выбрать тип--</option>
 				<option value="Обесп.Исп.Контр.">Исполнение контракта</option>
@@ -25,12 +33,19 @@
 				       id="warranty_per">
 			</div>
 		</div>
-	
 	</fieldset>
-	<!--counterpartyINN	--><!--counterpartyKPP	-->
+		<!--counterpartyName	-->
+	<div class="row mb-1 bg-secondary bg-gradient bg-opacity-50 pb-1 border border-1 border rounded-3 align-items-center">
+		<label class="col-sm-12 col-form-label pb-0 pt-0"><b>2. Получатель (Наименование)<span>*</span></b> (максимум 160
+			знаков)</label>
+		<div class="col-sm-12">
+			<input type="text" class="form-control" name="counterpartyName" id="counterpartyName" autocomplete="organization" required>
+		</div>
+	</div>
+	<!--counterpartyINN	--><!--counterpartyKPP	--><!--counterpartyBankBic	-->
 	<div class="row mb-1 flex-nowrap bg-secondary bg-gradient bg-opacity-50 pb-1 border border-1 border rounded-3 justify-content-between align-items-center">
-		<div class="col-sm-6 flex-shrink-1">
-			<label class="pb-0 pt-0"><b>2. ИНН <span>*</span></b> (10 цифр)</label>
+		<div class="col-sm-4 flex-shrink-1">
+			<label class="pb-0 pt-0"><b>3. ИНН <span>*</span></b> (10 цифр)</label>
 			<div>
 				<input type="text"
 				       onkeypress="return (event.charCode >= 48 && event.charCode <= 57 && /^\d{0,9}$/.test(this.value));"
@@ -38,56 +53,41 @@
 			</div>
 		</div>
 	<!--counterpartyKPP	-->
-		<div class="col-sm-6 flex-shrink-1">
-			<label class="pb-0 pt-0"><b>3. КПП <span>*</span></b> (9 цифр)</label>
+		<div class="col-sm-4 flex-shrink-1">
+			<label class="pb-0 pt-0"><b>4. КПП <span>*</span></b> (9 цифр)</label>
 			<div>
 				<input type="text"
 				       onkeypress="return (event.charCode >= 48 && event.charCode <= 57 && /^\d{0,8}$/.test(this.value));"
 				       class="form-control" name="counterpartyKPP" id="counterpartyKPP" required>
 			</div>
 		</div>
-	</div>
-	<!--counterpartyName	-->
-	<div class="row mb-1 bg-secondary bg-gradient bg-opacity-50 pb-1 border border-1 border rounded-3 align-items-center">
-		<label class="col-sm-2 col-form-label pb-0 pt-0"><b>4. Получатель <span>*</span></b> (максимум 160
-			знаков)</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" name="counterpartyName" id="counterpartyName" autocomplete="organization" required>
-		</div>
-	</div>
-	<!--counterpartyBankBic	-->
-	<div class="row mb-1 bg-secondary bg-gradient bg-opacity-50 pb-1 border border-1 border rounded-3 align-items-center ">
-		<label class="col-sm-2 col-form-label pb-0 pt-0"><b>5. БИК <span>*</span></b> (9 цифр)</label>
-		<div class="col-sm-10">
+			<!--counterpartyBankBic	-->
+		<div class="col-sm-4 flex-shrink-1">
+			<label class="pb-0 pt-0"><b>5. БИК <span>*</span></b> (9 цифр)</label>
 			<input type="text"
 			       onkeypress="return (event.charCode >= 48 && event.charCode <= 57 && /^\d{0,8}$/.test(this.value));"
 			       class="form-control" name="counterpartyBankBic" id="counterpartyBankBic" minlength="9" required>
 		</div>
 	</div>
-	<!--counterpartyAccountNumber	-->
-	<div class="row mb-1 bg-secondary bg-gradient bg-opacity-50 pb-1 border border-1 border rounded-3 align-items-center">
-		<label class="col-sm-2 col-form-label pb-0 pt-0"><b>6. Казначейский счёт <span>*</span></b> (КС или Р/С- 20
-			цифр)<i> обычно начинается с
-				"03"</i></label>
-		<div class="col-sm-10">
+	<!--counterpartyAccountNumber	--><!--counterpartyBankCorrAccount	-->
+	<div class="row mb-1 flex-nowrap bg-secondary bg-gradient bg-opacity-50 pb-1 border border-1 border rounded-3 align-items-center">
+		<div class="col-sm-6 flex-shrink-1">
+			<label class="pb-0 pt-0"><b>6. Казначейский счёт <span>*</span></b> (КС или Р/С- 20
+			цифр)<i> обычно начинается с "03"</i></label>
 			<input type="text"
 			       onkeypress="return (event.charCode >= 48 && event.charCode <= 57 && /^\d{0,19}$/.test(this.value));"
 			       class="form-control" id="counterpartyAccountNumber" name="counterpartyAccountNumber" minlength="20" required>
 		</div>
-	</div>
-	<!--counterpartyBankCorrAccount	-->
-	<div class="row mb-1 bg-secondary bg-gradient bg-opacity-50 pb-1 border border-1 border rounded-3 align-items-center">
-		<label class="col-sm-2 col-form-label pb-0 pt-0"><b>7. Единый казначейский счёт <span>*</span></b> (корр. счёт -
-			20 цифр)<i> обычно
-				начинается с "40"</i></label>
-		<div class="col-sm-10">
+		<div class="col-sm-6 flex-shrink-1">
+		<label class="pb-0 pt-0"><b>7. Единый казначейский счёт <span>*</span></b> (корр. счёт -
+			20 цифр)<i> обычно начинается с "40"</i></label>
 			<input type="text"
 			       onkeypress="return (event.charCode >= 48 && event.charCode <= 57 && /^\d{0,19}$/.test(this.value));"
 			       class="form-control" name="counterpartyBankCorrAccount" id="counterpartyBankCorrAccount" minlength="20" required>
 		</div>
 	</div>
 	<!--paymentAmount	--><!--paymentDate	-->
-	<div class="row mb-1 flex-nowrap bg-secondary bg-gradient bg-opacity-50 pb-1 border border-1 border rounded-3 justify-content-between align-items-center">
+	<div class="row mb-1 flex-nowrap bg-secondary bg-gradient bg-opacity-50 pb-1 border border-1 border rounded-3 justify-content-between">
 		<div class="col-sm-8 flex-shrink-1">
 			<label class="pb-0 pt-0"><b>8. Сумма обеспечения <span>*</span></b></label>
 			<input type="number" min="0.01" max="200000.00" step="0.01" class="form-control" name="paymentAmount"
@@ -95,41 +95,38 @@
 		</div>
 	<!--paymentDate	-->
 		<div class="col-sm-6 flex-shrink-1">
-			<label class="pb-0 pt-0"><b>9. Дата платежа</b></label>
-			<input type="date" id="tdate" name="paymentDate" class="form-control" required/>
+			<label class="pb-0 pt-0"><b>9. Дата платежа</b><i> (врем. недоступ.)</i></label>
+			<input type="date" id="tdate" name="paymentDate" class="form-control" disabled/>
 		</div>
 	</div>
 	<!--contractSubj	-->
 	<div class="row mb-1 bg-secondary bg-gradient bg-opacity-50 pb-1 border border-1 border rounded-3 align-items-center">
-		<label class="col-sm-2 col-form-label pb-0 pt-0"><b>10. Предмет контракта <span>*</span></b><i> (до 200
+		<label class="col-sm-12 col-form-label pb-0 pt-0"><b>10. Предмет контракта <span>*</span></b><i> (до 200
 			знаков)</i></label>
-		<div class="col-sm-10">
-			<input type="text" maxlength="200" class="form-control" name="contractSubj" id="contractSubj" required/>
-		
+		<div class="col-sm-12">
+			<textarea rows="3" maxlength="200" class="form-control" name="contractSubj" id="contractSubj" required></textarea>
 		</div>
 	</div>
 	<!--supplierBillId	-->
 	<div class="row mb-1 bg-secondary bg-gradient bg-opacity-50 pb-1 border border-1 border rounded-3 align-items-center">
-		<label class="col-sm-2 col-form-label pb-0 pt-0"><b>11. УИН <span>*</span></b> ("поле 22", 4, 20 или 25 цифры, или "0")<i> "0" - можно, "0000" - нельзя!</i></label>
-		<div class="col-sm-10">
+		<label class="col-sm-12 col-form-label pb-0 pt-0"><b>11. УИН <span>*</span></b> ("поле 22", 4, 20 или 25 цифры, или "0")<i> "0" - можно, "0000" - нельзя!</i></label>
+		<div class="col-sm-8">
 			<input type="text"
 		           onkeypress="return (event.charCode >= 48 && event.charCode <= 57 && /^\d{0,24}$/.test(this.value));"
 		           maxlength="25" class="form-control" name="supplierBillId" id="supplierBillId" value="0002" required/>
 		</div>
 	</div>
-	<!--taxInfoKBK	-->
-	<div class="row mb-1 bg-secondary bg-gradient bg-opacity-50 pb-1 border border-1 border rounded-3 align-items-center">
-		<label class="col-sm-2 col-form-label pb-0 pt-0"><b>12. КБК <span>*</span></b> ("0" или 20 цифр)</label>
-		<div class="col-sm-10">
+	<!--taxInfoKBK	--><!--taxInfoOKATO	-->
+	<div class="row flex-nowrap mb-1 bg-secondary bg-gradient bg-opacity-50 pb-1 border border-1 border rounded-3 align-items-center">
+		<div class="col-sm-6 flex-shrink-1">
+		<label class="pb-0 pt-0"><b>12. КБК <span>*</span></b> ("0" или 20 цифр)</label>
 			<input type="text"
 			       onkeypress="return (event.charCode >= 48 && event.charCode <= 57 && /^\d{0,19}$/.test(this.value));"
 			       maxlength="20" class="form-control" value="0" name="taxInfoKBK" id="taxInfoKBK" required/>
 		</div>
-	</div>
-	<!--taxInfoOKATO	-->
-	<div class="row mb-1 bg-secondary bg-gradient bg-opacity-50 pb-1 border border-1 border rounded-3 align-items-center">
-		<label class="col-sm-2 col-form-label pb-0 pt-0"><b>13. ОКТМО <span>*</span></b> (8 или 11 цифр)<i></i></label>
-		<div class="col-sm-10">
+		<div class="col-sm-6 flex-shrink-1">
+		<label class="pb-0 pt-0"><b>13. ОКТМО <span>*</span></b> (8 или 11 цифр)<i></i></label>
+
 			<input type="text"
 			       onkeypress="return (event.charCode >= 48 && event.charCode <= 57 && /^\d{0,19}$/.test(this.value));"
 			       minlength="8" maxlength="11" class="form-control" name="taxInfoOKATO" id="taxInfoOKATO" value="81701000" required/>
@@ -137,15 +134,15 @@
 	</div>
 	<!--contractEIS	-->
 	<div class="row mb-1 bg-secondary bg-gradient bg-opacity-50 pb-1 border border-1 border rounded-3 align-items-center">
-		<label class="col-sm-2 col-form-label pb-0 pt-0"><b>14. Номер закупки на ЕИС</b><i> (или другой идентифкатор,
-			для отслеживания, например номер контракта)</i></label>
-		<div class="col-sm-10">
+		<label class="col-sm-12 col-form-label pb-0 pt-0"><b>14. Номер закупки на ЕИС</b><i> (или другой идентифкатор,
+			для отслеживания в 1С, например номер контракта или проекта)</i></label>
+		<div class="col-sm-8">
 			<input type="text" maxlength="40" class="form-control" name="contractEIS" id="contractEIS">
 		</div>
 	</div>
 	<!--contractIKZ	-->
 	<div class="row mb-1 bg-secondary bg-gradient bg-opacity-50 pb-1 border border-1 border rounded-3 align-items-center">
-		<label class="col-sm-2 col-form-label pb-0 pt-0"><b>15. Номер ИКЗ</b> (36 цифр)<i> если есть
+		<label class="col-sm-12 col-form-label pb-0 pt-0"><b>15. Номер ИКЗ</b> (36 цифр)<i> если есть
 			требование</i></label>
 		<div class="col-sm-10">
 			<input type="text" maxlength="40" class="form-control" name="contractIKZ" id="contractIKZ" minlength="36">
@@ -153,9 +150,9 @@
 	</div>
 	<!--Назначение платежа	-->
 	<div class="row mb-1 bg-secondary bg-gradient bg-opacity-50 pb-1 border border-1 border rounded-3 align-items-center">
-		<label class="col-sm-2 col-form-label pb-0 pt-0"><b>Сформированное назначение платежа</b> (макс 210 знаков)<i>
+		<label class="col-sm-12 col-form-label pb-0 pt-0"><b>Сформированное назначение платежа</b> (макс 210 знаков)<i>
 			формируется автоматом на основании 1, 10, 14 и 15 пунктов</i></label>
-		<div class="col-sm-10">
+		<div class="col-sm-12">
 			<textarea maxlength="210" rows="5" class="form-control" name="paymentPurpose" id="paymentPurpose"
 			          disabled></textarea>
 			<div id="purposeLength" class="alert alert-danger m-2" role="alert" style="display: None">
